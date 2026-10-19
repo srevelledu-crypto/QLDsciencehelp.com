@@ -1,0 +1,6 @@
+# Drop new bundled revision pages here, then run tools/add-topic.mjs.
+# The published copies live under /chemistry and /physics, so the sources aren't committed.
+incoming/*
+!incoming/README.md
+node_modules/
+.DS_Store

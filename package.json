@@ -1,0 +1,13 @@
+{
+  "name": "qldsciencehelp",
+  "private": true,
+  "description": "Static revision site for QCE Chemistry and Physics. No build step; these scripts are optional helpers.",
+  "type": "module",
+  "scripts": {
+    "serve": "npx serve .",
+    "add-topic": "node tools/add-topic.mjs",
+    "sitemap": "node tools/build-sitemap.mjs",
+    "set-site-url": "node tools/set-site-url.mjs",
+    "check": "node tools/check-site.mjs"
+  }
+}
