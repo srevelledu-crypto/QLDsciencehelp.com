@@ -29,13 +29,17 @@ jobs:
           node-version: 20
       - name: Check data file and links
         run: node tools/check-site.mjs
+      - id: pages
+        uses: actions/configure-pages@v5
       - name: Prepare site folder
         # Publish everything except repo-only files (tools, incoming sources, docs).
         run: |
           mkdir _site
           rsync -a --exclude '.git' --exclude '.github' --exclude '_site' --exclude 'tools' \
             --exclude 'incoming' --exclude 'README.md' --exclude 'package.json' ./ _site/
-      - uses: actions/configure-pages@v5
+      - name: Adjust paths if served from a sub-folder
+        # e.g. https://<user>.github.io/<repo>/ — base_path is empty once a custom domain is set.
+        run: node tools/apply-base-path.mjs _site "${{ steps.pages.outputs.base_path }}"
       - uses: actions/upload-pages-artifact@v3
         with:
           path: _site

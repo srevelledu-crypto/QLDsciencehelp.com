@@ -86,7 +86,7 @@ Each topic can also have `keywords: ["…"]`, which are extra words for search. 
 
 **First deploy:** in the repo on GitHub, go to **Settings → Pages → Build and deployment → Source** and choose **GitHub Actions**. Every push to `main` then runs `.github/workflows/deploy.yml`, which checks the site and publishes it. Repo-only files (`tools/`, `incoming/`, README) aren't published.
 
-> The site uses root-relative paths, so it must be served from the root of a domain. A *project* site at `https://<user>.github.io/<repo>/` will look broken until the custom domain is set up. Alternatively, name the repository `<user>.github.io`.
+> The site's files use root-relative paths (`/assets/...`). When GitHub serves it from a sub-folder, e.g. `https://srevelledu-crypto.github.io/QLDsciencehelp.com/` before a custom domain is set, the deploy workflow prefixes those paths automatically (`tools/apply-base-path.mjs`, run on the published copy only). Once a custom domain is set, the prefix is dropped automatically on the next deploy.
 
 **Custom domain** (when you have it):
 1. At your domain registrar, add the DNS records GitHub lists under *Managing a custom domain for your GitHub Pages site*: four `A` records for the apex domain, plus a `CNAME` for `www` pointing to `<user>.github.io`.
