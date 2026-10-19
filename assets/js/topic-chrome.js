@@ -44,7 +44,7 @@
     "a{color:#0b5aa6;text-decoration:none}" +
     "a:hover{text-decoration:underline;text-underline-offset:.18em}" +
     "a:focus-visible{outline:3px solid #0b5aa6;outline-offset:2px;border-radius:4px}" +
-    ".bar{background:#faf9f5;border-bottom:1px solid #dedad0}" +
+    ".bar{background:#fff;border-bottom:1px solid #dbe1ea}" +
     ".in{max-width:1080px;margin:0 auto;padding:6px 16px;min-height:52px;display:flex;align-items:center;gap:6px 16px;flex-wrap:wrap}" +
     ".logo{display:inline-flex;align-items:center;flex:none;border-radius:6px}" +
     ".logo img{display:block;height:34px;width:auto}" +
@@ -53,11 +53,11 @@
     "li{display:inline-flex;align-items:center;white-space:nowrap}" +
     "li+li::before{content:'\\203A';color:#6b7280;padding:0 7px;font-size:16px}" +
     "li[aria-current] span{color:#0f2340;font-weight:600}" +
-    ".topics{flex:none;font-weight:600;padding:6px 12px;border:1px solid #c4bfb2;border-radius:999px;background:#fff;color:#0f2340}" +
-    ".topics:hover{background:#f1efe8;text-decoration:none}" +
-    ".nav{background:#faf9f5;border-top:1px solid #dedad0}" +
+    ".topics{flex:none;font-weight:600;padding:6px 12px;border:1px solid #dbe1ea;border-radius:999px;background:#fff;color:#0f2340}" +
+    ".topics:hover{background:#f7f9fc;border-color:#0b5aa6;text-decoration:none}" +
+    ".nav{background:#fff;border-top:1px solid #dbe1ea}" +
     ".nav .in{justify-content:space-between;padding:14px 16px 18px;align-items:stretch}" +
-    ".pn{flex:1 1 240px;max-width:100%;display:flex;flex-direction:column;gap:2px;padding:10px 14px;border:1px solid #c4bfb2;border-radius:8px;background:#fff;color:#0f2340}" +
+    ".pn{flex:1 1 240px;max-width:100%;display:flex;flex-direction:column;gap:2px;padding:10px 14px;border:1px solid #dbe1ea;border-radius:6px;background:#fff;color:#0f2340}" +
     ".pn:hover{border-color:#0b5aa6;text-decoration:none}" +
     ".pn small{font-size:13px;color:#4a5568;font-weight:600;letter-spacing:.02em}" +
     ".pn span{font-family:'IBM Plex Serif',Georgia,serif;font-weight:600;font-size:16px;color:#0b5aa6}" +
