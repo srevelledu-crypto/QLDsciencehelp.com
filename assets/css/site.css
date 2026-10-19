@@ -242,15 +242,16 @@ kbd {
   height: auto;
 }
 .brand .brand-mark {
-  width: 3.4rem; /* 1083×725 aspect */
+  width: 6.2rem; /* 287×128 emblem: QLD, orbit and flask */
+  /* The "QLD" letters sit below the emblem's centre (the orbit and ball sit above them).
+     Shift up so the letters line up with the wordmark and the nav links. */
+  transform: translateY(-14.5%);
 }
 .brand .brand-word {
-  width: 11.5rem; /* 1468×218 aspect */
+  width: 11.6rem; /* 529×80 "sciencehelp.com" */
   max-width: 100%;
-  /* The image leaves room below the letters for the "p" descender, so its letters sit
-     above the image's centre. Shift down by half that space (≈17% of its height) so the
-     capitals line up with the map icon and the nav links. */
-  transform: translateY(17%);
+  /* Centre the lowercase letters (not the ascenders and the "p" descender) on the line. */
+  transform: translateY(-1.5%);
 }
 .main-nav {
   grid-area: nav;

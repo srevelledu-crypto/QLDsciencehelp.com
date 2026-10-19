@@ -86,7 +86,7 @@
   function topBarHTML(t) {
     return (
       '<div class="bar"><div class="in">' +
-      '<a class="logo" href="/" aria-label="QLDsciencehelp.com home"><img src="' + BASE + 'img/logo-mark.png" alt="QLDsciencehelp.com" width="51" height="34"></a>' +
+      '<a class="logo" href="/" aria-label="QLDsciencehelp.com home"><img src="' + BASE + 'img/logo-mark.png" alt="QLDsciencehelp.com" width="76" height="34"></a>' +
       '<nav class="crumbs" aria-label="Breadcrumb"><ol>' +
       '<li><a href="' + esc(t.subject.url) + '">' + esc(t.subject.name) + "</a></li>" +
       '<li><a href="' + esc(t.subject.url) + "#" + esc(t.unit.id) + '">Unit ' + esc(t.unit.number) + "</a></li>" +
