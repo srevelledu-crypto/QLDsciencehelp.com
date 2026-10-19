@@ -276,6 +276,25 @@
       .catch(function () {});
   }
 
+  // The bundled pages' loading screen is an SVG whose viewBox attribute was mangled to
+  // "sc-camel-view-box", so it draws unscaled from the top-left corner (on phones only a
+  // corner shows). Restore the viewBox so it scales to fit, and fill the rest of the
+  // screen with the artwork's own background colour so it covers the full screen.
+  function fixSplash() {
+    try {
+      var box = document.getElementById("__bundler_thumbnail");
+      var svg = box && box.querySelector("svg");
+      if (!svg) return;
+      var vb = svg.getAttribute("viewBox") || svg.getAttribute("sc-camel-view-box");
+      if (vb) svg.setAttribute("viewBox", vb);
+      svg.setAttribute("preserveAspectRatio", "xMidYMid meet");
+      var rect = svg.querySelector("rect");
+      var fill = rect && rect.getAttribute("fill");
+      if (fill && /^#[0-9a-f]{3,8}$/i.test(fill)) box.style.setProperty("background", fill, "important");
+    } catch (e) {}
+  }
+
+  fixSplash();
   try {
     start();
   } catch (e) {}
