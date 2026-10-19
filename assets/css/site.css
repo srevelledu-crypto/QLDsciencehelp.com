@@ -310,7 +310,7 @@ kbd {
   background: var(--bg);
   border: 1px solid var(--border-strong);
   border-radius: 999px;
-  padding: 0.5rem 2.6rem 0.5rem 2.4rem;
+  padding: 0.5rem 1rem 0.5rem 2.4rem;
   min-height: 2.6rem;
   -webkit-appearance: none;
   appearance: none;
@@ -331,29 +331,6 @@ kbd {
   transform: translateY(-50%);
   color: var(--text-muted);
   pointer-events: none;
-}
-.search-kbd {
-  position: absolute;
-  right: 0.7rem;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 0.8rem;
-  line-height: 1;
-  padding: 0.2rem 0.45rem;
-  border: 1px solid var(--border-strong);
-  border-radius: 4px;
-  color: var(--text-muted);
-  background: var(--surface);
-  pointer-events: none;
-}
-.search-input:focus + .search-kbd,
-.search-input:not(:placeholder-shown) + .search-kbd {
-  display: none;
-}
-@media (hover: none) {
-  .search-kbd {
-    display: none;
-  }
 }
 .search-results {
   position: absolute;
