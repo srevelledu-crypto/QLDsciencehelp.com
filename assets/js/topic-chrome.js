@@ -173,6 +173,32 @@
     });
   }
 
+  // Layout fixes for the bundled pages. Their title header carries a fixed size left over
+  // from the design tool (e.g. width:1030px; height:498px), which pushes the learning
+  // objectives off the side of a phone screen. Let it size to the screen instead.
+  // Their card grids use repeat(auto-fit, minmax(320px, 1fr)) and similar, which forces a
+  // 320px column on screens narrower than that; cap each minimum at the available width.
+  var PAGE_FIXES = "#dc-root header{width:auto!important;height:auto!important;max-width:100%!important}";
+  (function () {
+    for (var px = 200; px <= 400; px += 10) {
+      ["fit", "fill"].forEach(function (mode) {
+        PAGE_FIXES +=
+          '#dc-root [style*="repeat(auto-' + mode + ", minmax(" + px + 'px, 1fr))"]' +
+          "{grid-template-columns:repeat(auto-" + mode + ",minmax(min(" + px + "px,100%),1fr))!important}";
+      });
+    }
+  })();
+
+  function addPageFixes() {
+    try {
+      if (document.getElementById("qsh-page-fixes")) return;
+      var style = document.createElement("style");
+      style.id = "qsh-page-fixes";
+      style.textContent = PAGE_FIXES;
+      (document.head || document.documentElement).appendChild(style);
+    } catch (e) {}
+  }
+
   function mount() {
     try {
       var t = state.topic;
@@ -181,6 +207,7 @@
       // Wait while the bundled page is still unpacking (its splash screen is showing);
       // the document swap that follows triggers mount() again.
       if (!state.force && document.getElementById("__bundler_thumbnail")) return;
+      addPageFixes();
       var top = document.getElementById(HOST_TOP);
       if (!top) {
         state.padTop = null;
