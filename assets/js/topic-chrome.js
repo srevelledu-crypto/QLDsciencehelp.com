@@ -197,6 +197,27 @@
       style.textContent = PAGE_FIXES;
       (document.head || document.documentElement).appendChild(style);
     } catch (e) {}
+    addIcons();
+  }
+
+  // The revision pages don't link a tab icon, so add the site's (unless the page has one).
+  function addIcons() {
+    try {
+      var head = document.head;
+      if (!head || head.querySelector('link[rel~="icon"]')) return;
+      var root = BASE.replace(/assets\/$/, "");
+      [
+        ["icon", "favicon.ico", "any"],
+        ["icon", "favicon-32x32.png", "32x32"],
+        ["apple-touch-icon", "apple-touch-icon.png", ""],
+      ].forEach(function (d) {
+        var link = document.createElement("link");
+        link.rel = d[0];
+        link.href = root + d[1];
+        if (d[2]) link.setAttribute("sizes", d[2]);
+        head.appendChild(link);
+      });
+    } catch (e) {}
   }
 
   function mount() {
@@ -322,6 +343,7 @@
   }
 
   fixSplash();
+  addIcons();
   try {
     start();
   } catch (e) {}
