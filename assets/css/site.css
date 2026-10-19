@@ -299,6 +299,10 @@ kbd {
 .brand .brand-word {
   width: 11.5rem; /* 1468×218 aspect */
   max-width: 100%;
+  /* The image leaves room below the letters for the "p" descender, so its letters sit
+     above the image's centre. Shift down by half that space (≈17% of its height) so the
+     capitals line up with the map icon and the nav links. */
+  transform: translateY(17%);
 }
 .main-nav {
   grid-area: nav;
