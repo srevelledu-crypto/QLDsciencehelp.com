@@ -1,7 +1,6 @@
 // Entry point for every site page (not the revision pages — they use topic-chrome.js).
 import { SUBJECTS, STEPS, allTopics } from "../data/topics.js";
 import { CONTACT_EMAIL } from "./config.js";
-import { initTheme } from "./theme.js";
 import { initSearch } from "./search.js";
 import { initAnalytics } from "./analytics.js";
 import { storageAvailable } from "./storage.js";
@@ -201,7 +200,6 @@ function run(name, fn) {
   }
 }
 
-run("theme", initTheme);
 run("search", initSearch);
 run("analytics", () => initAnalytics());
 run("year", () => document.querySelectorAll("[data-year]").forEach((e) => (e.textContent = String(new Date().getFullYear()))));

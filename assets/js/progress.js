@@ -4,7 +4,6 @@ import { STEPS, allTopics, findTopic, subjectTopics, unitTopics } from "../data/
 import { getItem, getJSON, removeItem } from "./storage.js";
 
 export const RECENT_KEY = "qsh_recent";
-export const THEME_KEY = "qsh_theme";
 export const TOTAL_STEPS = STEPS.length;
 
 /** Visited step indices for a topic, from `<progressKey>_v`. */

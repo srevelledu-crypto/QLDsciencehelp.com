@@ -67,7 +67,6 @@
   --meter-fill: #2e7d22;
   --meter-fill-end: #3f9b2f;
   --hero-grad: linear-gradient(135deg, #0b5aa6, #0a3d7a);
-  --logo-backdrop: transparent;
   --shadow: 0 1px 2px rgba(15, 35, 64, 0.06), 0 4px 16px rgba(15, 35, 64, 0.05);
 
   /* type & layout */
@@ -83,56 +82,6 @@
   :root {
     --gutter: 1.5rem;
   }
-}
-
-/* Dark tokens: system preference unless the visitor chose light */
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    color-scheme: dark;
-    --bg: #0d1626;
-    --surface: #142037;
-    --surface-muted: #1a2943;
-    --text: #e9eef6;
-    --text-muted: #b2bfd1;
-    --border: #2a3a57;
-    --border-strong: #3d5175;
-    --link: #8cc4ff;
-    --link-hover: #b7dbff;
-    --accent: #8cc4ff;
-    --accent-contrast: #0d1626;
-    --success-text: #8fdc6c;
-    --soon-text: #aab4c3;
-    --soon-bg: #111c2f;
-    --focus: #8cc4ff;
-    --meter-track: #2a3a57;
-    --meter-fill: #4fae3b;
-    --meter-fill-end: #7fd35a;
-    --logo-backdrop: #faf9f5;
-    --shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-  }
-}
-:root[data-theme="dark"] {
-  color-scheme: dark;
-  --bg: #0d1626;
-  --surface: #142037;
-  --surface-muted: #1a2943;
-  --text: #e9eef6;
-  --text-muted: #b2bfd1;
-  --border: #2a3a57;
-  --border-strong: #3d5175;
-  --link: #8cc4ff;
-  --link-hover: #b7dbff;
-  --accent: #8cc4ff;
-  --accent-contrast: #0d1626;
-  --success-text: #8fdc6c;
-  --soon-text: #aab4c3;
-  --soon-bg: #111c2f;
-  --focus: #8cc4ff;
-  --meter-track: #2a3a57;
-  --meter-fill: #4fae3b;
-  --meter-fill-end: #7fd35a;
-  --logo-backdrop: #faf9f5;
-  --shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 /* ---------- Base ---------- */
@@ -266,11 +215,11 @@ kbd {
 }
 .header-inner {
   display: grid;
-  grid-template-columns: 1fr auto;
+  grid-template-columns: 1fr;
   grid-template-areas:
-    "brand theme"
-    "nav nav"
-    "search search";
+    "brand"
+    "nav"
+    "search";
   align-items: center;
   gap: 0.5rem 0.75rem;
   padding-top: 0.6rem;
@@ -286,7 +235,6 @@ kbd {
   padding: 0.2rem 0.45rem 0.2rem 0.25rem;
   margin-left: -0.25rem;
   border-radius: var(--radius-sm);
-  background: var(--logo-backdrop);
   min-width: 0;
 }
 .brand img {
@@ -336,14 +284,11 @@ kbd {
 .header-search {
   grid-area: search;
 }
-.theme-toggle {
-  grid-area: theme;
-}
 
 @media (min-width: 60em) {
   .header-inner {
-    grid-template-columns: auto auto 1fr auto;
-    grid-template-areas: "brand nav search theme";
+    grid-template-columns: auto auto 1fr;
+    grid-template-areas: "brand nav search";
     gap: 1rem;
   }
   .header-search {
@@ -351,31 +296,6 @@ kbd {
     width: 100%;
     max-width: 22rem;
   }
-}
-
-/* Theme toggle */
-.theme-toggle {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  font: inherit;
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: var(--text);
-  background: var(--surface);
-  border: 1px solid var(--border-strong);
-  border-radius: 999px;
-  padding: 0.35rem 0.75rem;
-  min-height: 2.5rem;
-  cursor: pointer;
-}
-.theme-toggle:hover {
-  background: var(--surface-muted);
-}
-.theme-toggle svg {
-  width: 1.1rem;
-  height: 1.1rem;
-  flex: none;
 }
 
 /* ---------- Search ---------- */
@@ -739,16 +659,6 @@ a.topic-card:hover .topic-title {
   color: #a32020;
   border-color: #c96a6a;
 }
-:root[data-theme="dark"] .btn-danger {
-  color: #ffb3b3;
-  border-color: #b56060;
-}
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .btn-danger {
-    color: #ffb3b3;
-    border-color: #b56060;
-  }
-}
 .btn-danger:hover {
   background: var(--surface-muted);
   color: inherit;
@@ -766,7 +676,6 @@ a.topic-card:hover .topic-title {
   width: min(100%, 26rem);
   padding: 0.5rem;
   border-radius: var(--radius);
-  background: var(--logo-backdrop);
 }
 .hero h1 {
   font-size: clamp(1.55rem, 1.2rem + 1.6vw, 2.2rem);
@@ -947,26 +856,5 @@ a.topic-card:hover .topic-title {
   .site-footer,
   .search {
     display: none;
-  }
-}
-
-/* ---------- Narrow phones: keep the brand and theme toggle on one row ---------- */
-@media (max-width: 26em) {
-  .brand .brand-mark {
-    width: 2.6rem;
-  }
-  .brand .brand-word {
-    width: 9.6rem;
-  }
-  .theme-toggle {
-    padding: 0.35rem 0.6rem;
-  }
-  .theme-toggle span {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
-    clip: rect(0 0 0 0);
-    white-space: nowrap;
   }
 }

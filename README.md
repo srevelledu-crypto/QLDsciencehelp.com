@@ -15,7 +15,7 @@ This is a **pure static site**: plain HTML, CSS and vanilla JavaScript. There's 
 /assets/data/topics.js      ← single source of truth for every subject, unit and topic
 /assets/js/config.js        ← SITE_URL, CONTACT_EMAIL, ANALYTICS_TOKEN
 /assets/js/topic-chrome.js  Top bar + prev/next buttons injected into revision pages
-/assets/js/site.js          Entry point for the site pages (theme, search, progress, …)
+/assets/js/site.js          Entry point for the site pages (search, progress, …)
 /assets/css/site.css        All site styles (design tokens are CSS custom properties)
 /assets/fonts/              IBM Plex Sans/Serif, self-hosted woff2 (SIL OFL, see OFL.txt)
 /assets/img/                Logo, logo variants, icons, social-share image
@@ -110,7 +110,7 @@ The key prefix for each topic is stored as `progressKey` in `topics.js`, e.g. `c
 - **In progress (n/5)**: some steps visited;
 - **Completed**: all five visited.
 
-This shows on topic cards (a five-segment bar plus a text label), as unit and subject summaries, and on the home page. `topic-chrome.js` records the most recently opened topic under `qsh_recent`, storing only `{ "id": "chem-3-1-2", "t": <timestamp> }`. The home page uses it for the "Continue where you left off" card. The theme choice is stored under `qsh_theme`.
+This shows on topic cards (a five-segment bar plus a text label), as unit and subject summaries, and on the home page. `topic-chrome.js` records the most recently opened topic under `qsh_recent`, storing only `{ "id": "chem-3-1-2", "t": <timestamp> }`. The home page uses it for the "Continue where you left off" card.
 
 All storage access is wrapped in `try/catch`. If the browser blocks storage, pages still render and progress shows as "Not started".
 
@@ -131,6 +131,6 @@ If anything fails, it does nothing and the revision page works as before.
 ## Design notes
 
 - Colours come from the logo: navy `#0f2340`, Queensland blue `#0b5aa6 → #0a3d7a`, green `#3f9b2f → #6cc04a`, and background `#faf9f5`. They're all tokens at the top of `site.css`. Text colours meet WCAG AA in both themes.
-- Site pages follow the system light/dark setting, with a System / Light / Dark toggle in the header. In dark mode the logo sits on a light backdrop so the navy wordmark stays readable. Revision pages are light only.
+- The whole site is light-only, matching the revision pages and the logo.
 - Fonts are self-hosted, so site pages make no Google requests. The revision pages bundle their own fonts but keep a `preconnect` to Google Fonts, which the privacy section mentions.
 - Images: `logo.png` is the original. `logo-960/480.png`, `logo-mark.png` and `logo-wordmark.png` are trimmed variants. `qld-map-*.png`, `favicon.ico`, `favicon-32x32.png` and `apple-touch-icon.png` are the Queensland map icon. `og-image.png` is the 1200×630 share image.
