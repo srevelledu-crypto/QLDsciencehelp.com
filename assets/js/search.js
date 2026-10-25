@@ -90,7 +90,7 @@ export function search(query) {
       }
       score += s;
     }
-    if (ok) scored.push({ e, score: score + (e.live ? 5 : 0) });
+    if (ok) scored.push({ e, score: score + (e.live ? 15 : 0) }); // prefer published pages on close matches
   }
   scored.sort((a, b) => b.score - a.score);
   return scored.slice(0, MAX_RESULTS).map((s) => s.e);

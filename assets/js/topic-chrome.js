@@ -178,7 +178,13 @@
   // objectives off the side of a phone screen. Let it size to the screen instead.
   // Their card grids use repeat(auto-fit, minmax(320px, 1fr)) and similar, which forces a
   // 320px column on screens narrower than that; cap each minimum at the available width.
-  var PAGE_FIXES = "#dc-root header{width:auto!important;height:auto!important;max-width:100%!important}";
+  // Wide data tables (min-width:520px+) that aren't in a scrolling box stretch a whole grid
+  // column (e.g. every exam question card on 3.1.4); let grid items shrink and let the
+  // table's own container scroll sideways instead.
+  var PAGE_FIXES =
+    "#dc-root header{width:auto!important;height:auto!important;max-width:100%!important}" +
+    '#dc-root [style*="display: grid"]>*{min-width:0}' +
+    '#dc-root :has(>table[style*="min-width"]){overflow-x:auto;max-width:100%}';
   (function () {
     for (var px = 200; px <= 400; px += 10) {
       ["fit", "fill"].forEach(function (mode) {
